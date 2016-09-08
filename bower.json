@@ -1,0 +1,21 @@
+{
+  "name": "diagrams",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "no"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}

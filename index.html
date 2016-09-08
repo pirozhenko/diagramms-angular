@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myDiagramm">
+<head>
+	<meta charset="UTF-8">
+	<title>diagrams</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-controller="LineCtrl">
+
+		<canvas id="line" class="chart chart-line" chart-data="data"
+			chart-labels="labels" chart-series="series" chart-options="options"
+			chart-dataset-override="datasetOverride" chart-click="onClick"
+		</canvas> 
+
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+	<script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+	<script src="assets/js/app.js"></script>
+	<script src="assets/js/controllers.js"></script>
+	<script src="assets/js/services.js"></script>
+	<script src="assets/js/derectives.js"></script>
+</body>
+</html>
