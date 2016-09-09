@@ -11,15 +11,23 @@ angular.module("myDiagramm", ["chart.js"])
     console.log(points, evt);
   };
 
-  $http.get('http://testtask.callway.com.ua/Help/Api/GET-api-items', {
-  	params: {},
-  	headers: {}
-  })
+
+  var config = {
+  		headers: {
+  			'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/json'
+		  	},
+		  	data: {
+		  		'x': 1,
+		  		'y': 2
+		  	}
+  }
+  $http.get('http://testtask.callway.com.ua/Help/Api/GET-api-chart', config)
   	.success(function(data, status, headers, config) {
   			console.log('yes');
   	})
   	.error(function(data, status, headers, config){
-  			console.log('fock');
+  			console.log(config);
   	});
 
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
