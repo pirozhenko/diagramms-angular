@@ -23,19 +23,13 @@
 						<div class="row">
 							<div class="col-md-4">
 								<label>
-						       first value
+						       first value:
 						       <input class="form-control" type="text" name="firstValue" ng-model="coordX"  placeholder="enter value one" ng-required="true" ng-pattern="regexp">
 								</label>
 							</div>
 							<div class="col-md-4">
 								<label>
 						       second value:
-						       <input class="form-control" type="text" name="secondValue" ng-model="coordY"  placeholder="enter value two" ng-required="true" ng-pattern="regexp">
-								</label>
-							</div>
-							<div class="col-md-4">
-								<label>
-						       Label:
 						       <input class="form-control" type="text" name="label" ng-model="newLabel" placeholder="enter your label" ng-required="true">
 								</label>
 							</div>
@@ -54,13 +48,13 @@
 						<h1 class="text-center text-uppercase">list</h1>
 					</div>
 					<div class="col-xs-4">
-						<h4 class="text-uppercase" ng-repeat="label in labels">{{label}}</h4>
+						<h4 class="text-uppercase" ng-repeat="label in labels">X coordination: {{label}}</h4>
 					</div>
 					<div class="col-xs-4">
-						<h4 class="text-center text-uppercase" ng-repeat="x in data[0]">X coordination: {{x}}</h4>
+						<h4 class="text-center text-uppercase" ng-repeat="y in data[0]">Y coordination: {{y}}</h4>
 					</div>
 					<div class="col-xs-4">
-						<h4 class="text-center text-uppercase" ng-repeat="y in data[1]">Y coordination: {{y}}</h4>
+						<!-- <h4 class="text-center text-uppercase" ng-repeat="y in data[1]"> {{y}}</h4> -->
 					</div>
 				</div>
 				<hr>

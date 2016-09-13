@@ -16,35 +16,51 @@ angular.module("myDiagramm", ["chart.js"])
   	$scope.showHide = !$scope.showHide;
   };
 
-  // var data = {
-  //  {x: 50, y: 50}
-  // };
   // var config = {
   //    header: {
   //      'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==',
   //      'Access-Control-Allow-Origin': '*',
-    //    'Content-Type': 'application/json'
-    //    }
+  //      'Content-Type': 'application/json'
+  //      }
   // };
-  $http.get('diagrams.json')
+  var config = {
+        header : {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+        }
+      };
+  $http.get('http://testtask.callway.com.ua/api/chart')
     .success(function(res) {
       res.forEach(function(item) {
-        $scope.coord = item.data;
-        $scope.data[0].push($scope.coord.x)
-        $scope.data[1].push($scope.coord.y)
-        $scope.label = item.label;
-
-        $scope.labels.push($scope.label)
+        $scope.data[0].push(item.X);
+        $scope.labels.push(item.Y);
       })
     });
 
+  // $http.put('http://testtask.callway.com.ua/api/addItem', {'X':25, 'Y':11}, config)
+  //   .success(function(res) {
+  //   console.log(res);
+  //     // res.forEach(function(item) {
+  //     //   $scope.data[0].push(item.X);
+  //     //   $scope.data[1].push(item.Y);
+  //     // })
+  //   });
+
   $scope.addItem = function() {
-    $scope.data[0].push($scope.coordX);
-    $scope.data[1].push($scope.coordY);
+    $scope.data[0].push($scope.coordX),
     $scope.labels.push($scope.newLabel);
-    $scope.coordX = '';
-    $scope.coordY = '';
-    $scope.newLabel = '';
+
+  var data = ({
+    'X': '$scope.coordX',
+    'Y': '$scope.newLabel'
+  });
+    $http.put('http://testtask.callway.com.ua/api/addItem', data, config).success(function(data, status, headers, config) {
+      // console.log(res);
+    }).error(function(data, status, headers, config) {
+      alert( "failure message: " + JSON.stringify({data: data}));
+    });
+    $scope.coordX = '',
+    $scope.newLabel = ''
   };
 
   $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
@@ -61,7 +77,7 @@ angular.module("myDiagramm", ["chart.js"])
           id: 'y-axis-2',
           type: 'linear',
           display: true,
-          position: 'right'
+          position: 'bottom'
         }
       ]
     }
